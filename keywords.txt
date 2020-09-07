@@ -1,0 +1,3 @@
+IRIS	KEYWORD1
+
+setLight	KEYWORD2
