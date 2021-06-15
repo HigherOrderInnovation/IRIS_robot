@@ -1,7 +1,5 @@
 /*
   IRIS.h - Library for interfacing to the IRIS Robot
-  Created by David A. Mellis, November 2, 2007.
-  Released into the public domain.
 */
 
 #include "Arduino.h"
