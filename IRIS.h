@@ -1,14 +1,22 @@
 /*
   IRIS.h - Library for interfacing to the IRIS Robot
+  Created by David A. Mellis, November 2, 2007.
+  Released into the public domain.
 */
 
 #include "Arduino.h"
+
 
 class IRIS
 {
   public:
     IRIS();
-    void setLight();
+    void setLED(bool _state);
+	int getLightReading();
+	int getNeoPin();
+	bool getButtonState();
+	int getButtonPin();
+	void setMotors(int left, int right);
   private:
     int _ir_pin = 23;
 	int _neo_pin = 18;
@@ -21,4 +29,9 @@ class IRIS
 	int _motorB_one_pin = 14;
 	int _motorB_two_pin = 2;
 	int _motorB_pwm_pin = 26;
+	
+    int freq = 5000;
+    int ledChannel = 0;
+    int ledChannel2 = 1;
+    int resolution = 8;
 };
