@@ -1,10 +1,17 @@
-// Iris Motor Control Challenge
-///////////////////////////////////////////////////////////
-// When the pushbutton is pressed, drive the robot in a square, trying to end up as close to the starting location as possible
-// Note that your results may vary due to Surface roughness, Battery level, and/or motor differences.
-// Surface roughness and battery level will especially affect the turns.
-// Motor Differences may cause adjustments to be required for straight motions
-// Areas that might need adjustment are noted below
+// IRIS Chapter 6 - Motors - Challenge
+//////////////////////////
+// Challenge
+//   When the pushbutton is pressed, drive the robot in a square, trying to end up as close to the starting location as possible
+//   Note that your results may vary due to Surface roughness, Battery level, and/or motor differences.
+//   Surface roughness and battery level will especially affect the turns.
+//   Motor Differences may cause adjustments to be required for straight motions
+//   Areas that might need adjustment are noted below
+
+// Required Topics
+// 1. Arduino functions (https://www.arduino.cc/en/Reference/FunctionDeclaration)
+// 2. delay(int milliseconds); will wait the indicated number of milliseconds
+// 3. robot.setMotors(int left, int right) left and right range from -100....100 with 0 being stop
+
 
 #include <IRIS.h>   // Include the Iris library
 IRIS robot;         // Create an instance of the Iris Robot

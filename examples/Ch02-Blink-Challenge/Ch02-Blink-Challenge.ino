@@ -9,6 +9,7 @@
 // 1. robot.setLED(bool state) will turn the light on (true) or off (false)
 // 2. delay(int milliseconds); will wait the indicated number of milliseconds
 // 3. Serial Communication and Serial Terminal (https://www.arduino.cc/reference/en/language/functions/communication/serial/)
+// 4. Functions (https://www.arduino.cc/en/Reference/FunctionDeclaration)
 
 #include <IRIS.h>           // Import the IRIS Library
 IRIS robot;                 // Create an Iris Object called robot

@@ -1,9 +1,18 @@
-// IRIS OLED Output Screen
-// Requires Adafruit_SSD1306 library
-// Install through Sketch->Include Libraries->Manage Libraries
+// IRIS Chapter 5 - Screen
+/////////////////////////////////////
+// Purpose
+//   Show basic functionality of the Screen through the Adafruit_SSD1306.h library
 
-#include <IRIS.h>
-IRIS robot;
+// Required Libraries - Add through Sketch->Include Libraries->Manage Libraries...
+// 1. Adafruit_GFX
+// 2. Adafruit_SSD1306
+
+// Required Topics
+// 1. robot.getLightReading() will return the light reading from 0-4095
+// 2. Adafruit_SSD1306.h (https://learn.adafruit.com/monochrome-oled-breakouts/arduino-library-and-examples)
+
+#include <IRIS.h>   // Include the Iris library
+IRIS robot;         // Create an instance of the Iris Robot
 
 // Additional Include statements for the Screen
 #include <SPI.h>
