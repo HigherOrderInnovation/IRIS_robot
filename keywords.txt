@@ -1,3 +1,13 @@
 IRIS	KEYWORD1
 
-setLight	KEYWORD2
+setLED	KEYWORD2
+getLightReading	KEYWORD2
+getNeoPin	KEYWORD2
+getButtonState	KEYWORD2
+getButtonPin	KEYWORD2
+setMotors	KEYWORD2
+setDockMotor	KEYWORD2
+attachDockMotor	KEYWORD2
+setupMotors	KEYWORD2
+pauseMotors	KEYWORD2
+getIrPin KEYWORD2
