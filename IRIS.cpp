@@ -43,6 +43,7 @@ void IRIS::pauseMotors(){
 
 void IRIS::attachDockMotor(int position)
 {
+	#ifdef isDocked
 	switch(position){
 		case 1:
 			dock1.attach(dockMotorPin1);
@@ -63,10 +64,12 @@ void IRIS::attachDockMotor(int position)
 			dock6.attach(dockMotorPin6);
 			break;	
 	}
+	#endif
 }
 
 
 void IRIS::setDockMotor(int position, int speed){
+	#ifdef isDocked
 	int val = map(speed, -100, 100, 0, 180);
 	switch(position){
 		case 1:
@@ -88,6 +91,7 @@ void IRIS::setDockMotor(int position, int speed){
 			dock6.write(val);
 			break;	
 	}
+	#endif
 }
 
 ////////////////////////////////////////////////////////////////////////////
