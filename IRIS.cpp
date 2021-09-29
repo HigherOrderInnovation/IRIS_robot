@@ -357,10 +357,10 @@ int IRIS::SmartMotorReadVin(HardwareSerial &SerialX, uint8_t id){
 void IRIS::setLED(bool _state)
 {
 	if(_state){
-		digitalWrite(_led_pin, HIGH);
+		digitalWrite(_led_pin, LOW);
 	}
 	else{
-		digitalWrite(_led_pin, LOW);
+		digitalWrite(_led_pin, HIGH);
 	}
 }
 
