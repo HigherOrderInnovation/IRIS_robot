@@ -52,13 +52,14 @@ class IRIS
 	int ledChannel = 0;
 	int ledChannel2 = 1;
 	int resolution = 8;
-
+#ifdef isDocked
 	Servo dock1;
 	Servo dock2;
 	Servo dock3;
 	Servo dock4;
 	Servo dock5;
 	Servo dock6;
+#endif
 
 	int dockMotorPin1 = 32;
 	int dockMotorPin2 = 33;
