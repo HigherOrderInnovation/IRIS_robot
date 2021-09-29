@@ -6,7 +6,10 @@
 
 #include "Arduino.h"
 #include "IRIS.h"
+
+#ifdef isDocked
 #include "ESP32_Servo.h"
+#endif
 
 IRIS::IRIS()
 {

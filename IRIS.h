@@ -3,8 +3,9 @@
 */
 
 #include "Arduino.h"
+#ifdef isDocked
 #include "ESP32_Servo.h"
-
+#endif
 
 class IRIS
 {
