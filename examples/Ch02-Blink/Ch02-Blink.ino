@@ -1,14 +1,15 @@
 // IRIS Chapter 2 - Blink
 /////////////////////////
-// Purpose
+// Purpose:
 //   Blink the Blue LED on the Iris Robot
 
-// Required Topics
+// Required Topics:
 // 1. robot.setLED(bool state) will turn the light on (true) or off (false)
 // 2. delay(int milliseconds); will wait the indicated number of milliseconds
 
-#include <IRIS.h>   // Import the IRIS Library
-IRIS robot;         // Create an Iris Object called robot
+#include <IRIS.h>   // Import the Iris library
+IRIS robot;         // Create an Iris object called robot
+//This allows Arduino to talk to the Iris robot you have plugged in to the computer.
 
 void setup() {
   // Nothing needed here

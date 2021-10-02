@@ -1,20 +1,17 @@
 // IRIS Chapter 5 - Screen
 /////////////////////////////////////
 // Purpose
-//   Show basic functionality of the Screen through the Adafruit_SSD1306.h library
+//   Use the screen to communicate a counter
 
-// Required Libraries - Add through Sketch->Include Libraries->Manage Libraries...
+// Required Libraries
 // 1. Adafruit_GFX
-// 2. Adafruit_SSD1306
+// 2. Adafruit_SSD13067
 
-// Required Topics
-// 1. robot.getLightReading() will return the light reading from 0-4095
-// 2. Adafruit_SSD1306.h (https://learn.adafruit.com/monochrome-oled-breakouts/arduino-library-and-examples)
+#include <IRIS.h>   // Import the Iris library
+IRIS robot;         // Create an Iris object called robot
+//This allows Arduino to talk to the Iris robot you have plugged in to the computer.
 
-#include <IRIS.h>   // Include the Iris library
-IRIS robot;         // Create an instance of the Iris Robot
-
-// Additional Include statements for the Screen
+// Additional Include statements for screen libraries
 #include <SPI.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h>
@@ -27,38 +24,28 @@ IRIS robot;         // Create an instance of the Iris Robot
 #define OLED_RESET     4 // Reset pin # (or -1 if sharing Arduino reset pin)
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
+
+// These functions are required to initialize the screen
 void setup() {
-  // Open up the Serial Terminal
-  // Tools->Serial Monitor and select 115200 for the baud rate
-  Serial.begin(115200);
-
-  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // Address 0x3C for 128x32
-    Serial.println(F("SSD1306 allocation failed"));
-    for(;;); // Don't proceed, loop forever
-  }
-
-  // Show initial display buffer contents on the screen --
-  // the library initializes this with an Adafruit splash screen.
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
   display.display();
-  // Clear the buffer
-  display.clearDisplay();
+  display.clearDisplay();     
+  display.setTextColor(SSD1306_WHITE);  
 }
 
+// Declare the variable output.  We will use this to count the seconds.
+int output = 0;   
+
 void loop() {
-  // Read the light sensor on the robot. 
-  // The value is 0-4095
-  int lightSensorReading = robot.getLightReading();
-  
-  String output = "Light Reading: ";       // Assemble the output message
-  output += lightSensorReading;
-  
   display.clearDisplay();                     // Clear the Screen
   display.setTextSize(1);                     // Normal 1:1 pixel scale
-  display.setTextColor(SSD1306_WHITE);        // Draw white text
   display.setCursor(0,0);                     // Start at top-left corner
-  display.println(output);                    // Show the same output on the screen
+  display.println("My name is Iris.");        // Print to screen then create a new line
+  display.println("I've been awake for");     // Print to screen then create a new line
+  display.setTextSize(2);                     // Change the text size
+  display.print(output);                      // Print to screen 
+  display.println(" seconds");                // Print to screen then create a new line
   display.display();                          // Render the screen
-  Serial.println(output);                     // Show the output in ther Serial Terminal
-  // Delay 500ms between readings
-  delay(500);
+  output += 1;                                // Assign a new value to output
+  delay(1000);                                // Wait one second
 }

@@ -7,8 +7,9 @@
 // 1. Serial Communication and Serial Terminal (https://www.arduino.cc/reference/en/language/functions/communication/serial/)
 // 2. The 'map' function (https://www.arduino.cc/reference/en/language/functions/math/map/0
 
-#include <IRIS.h>           // Import the IRIS Library
-IRIS robot;                 // Create an IRIS Object
+#include <IRIS.h>   // Import the Iris library
+IRIS robot;         // Create an Iris object called robot
+//This allows Arduino to talk to the Iris robot you have plugged in to the computer.
 
 void setup() {
   Serial.begin(9600);       // Begin Serial communication at 9600 baud
@@ -18,11 +19,11 @@ void loop() {
   int light = robot.getLightReading();      // Read the light sensor
   Serial.print("The light reading is ");
   Serial.println(light);
-  int wait = map(light, 0, 4095, 5, 1000);  // Proportionately map the sensor to a delay range
-  Serial.print("The delay is ");
-  Serial.println(wait);
-  delay(wait);                              // Wait for the calculated time
+  int blinkRate = map(light, 0, 4095, 5, 1000);  // Proportionately map the sensor to a delay range
+  Serial.print("The blink rate is ");
+  Serial.println(blinkRate);
+  delay(blinkRate);                              // Wait for the calculated time
   robot.setLED(true);                       // Turn on the LED
-  delay(wait);                              // Wait for the calculated time
+  delay(blinkRate);                              // Wait for the calculated time
   robot.setLED(false);                      // Turn off the LED
 }

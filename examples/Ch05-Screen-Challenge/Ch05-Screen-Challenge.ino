@@ -1,19 +1,17 @@
-// IRIS Chapter 5 - Screen - Challenge
-//////////////////////////////////////
-// Challenge
-//   Create a progress bar that builds across the screen
+// IRIS Chapter 5 - Screen
+/////////////////////////////////////
+// Purpose
+//   Use the screen to communicate the light sensor reading
 
-// Required Libraries - Add through Sketch->Include Libraries->Manage Libraries...
+// Required Libraries
 // 1. Adafruit_GFX
-// 2. Adafruit_SSD1306
+// 2. Adafruit_SSD13067
 
-// Required Topics
-// 1. Adafruit_SSD1306.h (https://learn.adafruit.com/monochrome-oled-breakouts/arduino-library-and-examples)
+#include <IRIS.h>   // Import the Iris library
+IRIS robot;         // Create an Iris object called robot
+//This allows Arduino to talk to the Iris robot you have plugged in to the computer.
 
-#include <IRIS.h>   // Include the Iris library
-IRIS robot;         // Create an instance of the Iris Robot
-
-// Additional Include statements for the Screen
+// Additional Include statements for screen libraries
 #include <SPI.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h>
@@ -26,42 +24,29 @@ IRIS robot;         // Create an instance of the Iris Robot
 #define OLED_RESET     4 // Reset pin # (or -1 if sharing Arduino reset pin)
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
+// These functions are required to initialize the screen
 void setup() {
-  // Open up the Serial Terminal
-  // Tools->Serial Monitor and select 115200 for the baud rate
-  Serial.begin(115200);
-
-  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // Address 0x3C for 128x32
-    Serial.println(F("SSD1306 allocation failed"));
-    for(;;); // Don't proceed, loop forever
-  }
-
-  // Show initial display buffer contents on the screen --
-  // the library initializes this with an Adafruit splash screen.
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
   display.display();
-  // Clear the buffer
-  display.clearDisplay();
-}
-void firstProgress() {
-  display.setCursor(0, 24);
-  for (int i = 0; i < 20; i++) {
-    display.print((char)0xDA);
-    display.display();
-    delay(50);
-  }
+  display.clearDisplay();     
+  display.setTextColor(SSD1306_WHITE);  
 }
 
-void loop() {  
-  display.clearDisplay();                     // Clear the Screen
-  display.setTextSize(1);                     // Normal 1:1 pixel scale
-  display.setTextColor(SSD1306_WHITE);        // Draw white text
-  display.setCursor(0,0);                     // Start at top-left corner
-  display.println("Working...");              // Show the same output on the screen
-  display.setCursor(0, 24);                   // Move to the bottom left corner of the screen
-  for (int i = 0; i < 20; i++) {              // For each of the positions on the screen
-    display.print((char)0xDA);                // Display the special character 0xDA. How can you find out what this character looks like?
-    display.display();                        // Update the screen
-    delay(50);                                // Create the progress bar that will last 1 second
+void loop() {
+  if (robot.getButtonState()) { // Check the state of the button
+     int lightSensorReading = robot.getLightReading(); // Read the light sensor
+     String output = "Light Reading: ";                // Assemble the output message
+      output += lightSensorReading;
+      display.clearDisplay();                           // Clear the Screen
+      display.setTextSize(1);                           // Normal 1:1 pixel scale
+      display.setCursor(0,0);                           // Start at top-left corner
+      display.println(output);                          // Print to screen then create a new line
+      display.display();                                // Render the screen
+      delay(500);                                       // Delay 500 ms
   }
-  delay(500);                                 // Delay 500 milliseconds before resetting the screen
+
+  else {
+     display.clearDisplay();     // Clear the Screen
+     display.display();          // Render the screen
+  }
 }

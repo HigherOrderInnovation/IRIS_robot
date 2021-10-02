@@ -1,60 +1,41 @@
 // IRIS Chapter 6 - Neopixel
 /////////////////////////////////////
 // Purpose
-//   Show basic functionality of the two Neopixels on the Iris Board
+//   Fade Neopixel LEDs
 
-// Required Libraries - Add through Sketch->Include Libraries->Manage Libraries...
+// Required Libraries 
 // 1. Adafruit_NeoPixel.h
 
-// Required Topics
-// 1. Adafruit_NeoPixel.h (https://learn.adafruit.com/adafruit-neopixel-uberguide/the-magic-of-neopixels?gclid=Cj0KCQjwkbuKBhDRARIsAALysV6F_DMb1YGIqQJBiAr1ltKBvHXhsoXEHaZtcmq4mr7BnZY7ViTq07kaAtUSEALw_wcB)
+#include <IRIS.h>   // Import the Iris library
+IRIS robot;         // Create an Iris object called robot
 
-#include <IRIS.h>   // Include the Iris library
-IRIS robot;         // Create an instance of the Iris Robot
-
+// Additional set-up required for Neopixel
 #include <Adafruit_NeoPixel.h>
 #define LED_PIN    robot.getNeoPin()
-// How many NeoPixels are attached to the Arduino?
 #define LED_COUNT 2
-// Declare our NeoPixel strip object:
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
-void setup() {
-  // Open up the Serial Terminal
-  // Tools->Serial Monitor and select 115200 for the baud rate
-  Serial.begin(115200);
-
-  strip.begin();           // INITIALIZE NeoPixel strip object (REQUIRED)
-  strip.show();            // Turn OFF all pixels ASAP
-  strip.setBrightness(50); // Set BRIGHTNESS to about 1/5 (max = 255)
+void setup() {    // Initialize NeoPixel strip object
+  strip.begin();           
+  strip.show();            
 }
+
+uint32_t color = strip.Color(255,0,0);  // Choose the color here.
 
 void loop() {
-  // Set each of the two lights
-  // Red, Green, Blue, Rainbow
-  strip.setPixelColor(0, strip.Color(255,0,0)); //Red
-  strip.setPixelColor(1, strip.Color(255,0,0)); //Red
-  strip.show();
-  delay(500);
-  strip.setPixelColor(0, strip.Color(0,255,0)); // Green
-  strip.setPixelColor(1, strip.Color(0,255,0)); // Green 
-  strip.show();
-  delay(500);
-  strip.setPixelColor(0, strip.Color(0,0,255)); // Blue
-  strip.setPixelColor(1, strip.Color(0,0,255)); // Blue
-  strip.show();
-  delay(500);
-  rainbow(10);
-}
-
-// Rainbow cycle along whole strip. Pass delay time (in ms) between frames.
-void rainbow(int wait) {
-  for(long firstPixelHue = 0; firstPixelHue < 5*65536; firstPixelHue += 256) {
-    for(int i=0; i<strip.numPixels(); i++) { // For each pixel in strip...
-      int pixelHue = firstPixelHue + (i * 65536L / strip.numPixels());
-      strip.setPixelColor(i, strip.gamma32(strip.ColorHSV(pixelHue)));
-    }
-    strip.show(); // Update strip with new contents
-    delay(wait);  // Pause for a moment
+  for (int i = 0; i <= 50; i = i+1){     // The variable i will INCREASE from 0 to 50 by an increment of 1
+    strip.setBrightness(i);             
+    strip.setPixelColor(0, color);      // Use the color variable
+    strip.setPixelColor(1, color);      // Use the color variable
+    strip.show();                       // Display the new colors
+    delay(50);                          // Wait 50 milliseconds
+  }
+// Reverse the fading sequence:
+  for (int i = 50; i >= 0; i = i-1){     // The variable i will DECREASE from 50 to 0 by an increment of 1
+    strip.setBrightness(i);             
+    strip.setPixelColor(0, color);      // Use the color variable
+    strip.setPixelColor(1, color);      // Use the color variable
+    strip.show();                       // Display the new colors
+    delay(50);                          // Wait 50 milliseconds
   }
 }
