@@ -19,8 +19,8 @@ IRIS robot;         // Create an Iris object called robot
 // Index  Mapping     Description
 //   0    Button A    1 if pressed, 0 if released
 //   1    Button B    1 if pressed, 0 if released
-//   2    Button Y    1 if pressed, 0 if released
-//   3    Button X    1 if pressed, 0 if released
+//   2    Button X    1 if pressed, 0 if released
+//   3    Button Y    1 if pressed, 0 if released
 //   4    Trackpad X  Range from -100 to 100 for horizontal tracking
 //   5    Trackpad Y  Range from -100 to 100 for vertical tracking
 //   6    Slider      Range from 0 to 100
