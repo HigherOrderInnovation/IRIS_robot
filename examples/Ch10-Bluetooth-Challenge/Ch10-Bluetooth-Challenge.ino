@@ -19,7 +19,7 @@ IRIS robot;         // Create an Iris object called robot
 // Additional set-up required for Neopixel
 #include <Adafruit_NeoPixel.h>
 #define LED_PIN    robot.getNeoPin()
-#define LED_COUNT 2
+#define LED_COUNT 3
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 // Remote Control Input
