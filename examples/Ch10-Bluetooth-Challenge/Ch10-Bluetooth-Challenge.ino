@@ -53,6 +53,7 @@ void setup() {
 // Initialize NeoPixel strip object
   strip.begin();           
   strip.show();
+  strip.setBrightness(100); // Max brightness is 255
 }
 
 int counter = 0;
@@ -114,11 +115,11 @@ void loop() {
     // Convert the 0-100 value from the slider to the expected 0-255 range for brightness
     int mappedBrightness = map(remote[6],0,100,0,255);
 
-    uint32_t color = strip.Color(255,0,0);  // Choose the color here.
-
-    strip.setBrightness(mappedBrightness);  // Set the new brightness           
+    uint32_t color = strip.Color(mappedBrightness,0,0);  // Choose the color here.
+        
     strip.setPixelColor(0, color);          // Use the color variable set above
     strip.setPixelColor(1, color);          // Use the color variable set above
+    strip.setPixelColor(2, color);          // Use the color variable set above
     strip.show();                           // Display the new colors
   }
   
