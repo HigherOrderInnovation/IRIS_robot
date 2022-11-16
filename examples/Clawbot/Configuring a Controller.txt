@@ -1,0 +1,8 @@
+A PS4 controller is included in this kit.  Many users find the familiar controller to be better for driving and controlling the robot.  Connecting the controller to Iris takes a few extra steps that are not included in the main eBook explanation.  In the Github repository (See eBook for explanation of Github), an example called PS4 control can be found.  The steps below can be used to link the controller to Iris.
+Download the SixaxisPairTool.exe https://www.dropbox.com/s/k3ibcldjo2ma3au/SixaxisPairToolSetup-0.3.1.exe?dl=0.  
+Plug the PS4 controller into the computer with the included USB cable.
+The PairTool Program will display aa:bb:cc:dd:ee:XX with the PS4 controller plugged in.  The XX will match the label attached to Iris and the back of the controller.  Each of the digits are hexadecimal, meaning that they can each have a value of 0-9 or a-f.  This MAC address should be unique among your controllers.
+If you need to link a new PS4 controller to Iris, you can pick and address you would like.  Note that if you have more than one controller that you are preparing, each should have a different address.  After assigning an address, you may choose to label the controller on its back to keep track of it as all of the PS4 controllers look identical.
+
+The MAC address that you found in the steps above can be typed into the top of the example program to maintain a link.  
+Before this program will compile, a PS4 library from https://github.com/aed3/PS4-esp32 will need to be added to Arduino. Follow the steps from the eBook for adding this library to Arduino.
