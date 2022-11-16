@@ -1,5 +1,5 @@
-#include <PS4Controller.h>
-// Use the SixAxisPairTool to reset the MAC Address target for the PS4 controller
+#include <PS4Controller.h> // Download at https://github.com/aed3/PS4-esp32
+// Use the SixAxisPairTool to reset the MAC Address target for the PS4 controller - https://www.dropbox.com/s/k3ibcldjo2ma3au/SixaxisPairToolSetup-0.3.1.exe?dl=0. 
 // If trying to replace a PS4 controller, you may need to erase the flash entirely.  The command line tool is esptool.py --chip esp32 erase_flash
 String targetMAC = "aa:bb:cc:dd:ee:09";
 boolean isDock = true;
