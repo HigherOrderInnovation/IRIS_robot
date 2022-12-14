@@ -1,3 +1,5 @@
+Note that these instructions have been written for Windows operation.
+
 A PS4 controller is included in this kit.  Many users find the familiar controller to be better for driving and controlling the robot.  Connecting the controller to Iris takes a few extra steps that are not included in the main eBook explanation.  In the Github repository (See eBook for explanation of Github), an example called PS4 control can be found.  The steps below can be used to link the controller to Iris.
 Download the SixaxisPairTool.exe https://www.dropbox.com/s/k3ibcldjo2ma3au/SixaxisPairToolSetup-0.3.1.exe?dl=0.  
 Plug the PS4 controller into the computer with the included USB cable.
